@@ -38,6 +38,7 @@ path = "src/asyncio_task_manager/__about__.py"
 dependencies = [
   "coverage[toml]>=6.5",
   "pytest",
+  "pytest-asyncio",
 ]
 [tool.hatch.envs.default.scripts]
 test = "pytest {args:tests}"
@@ -60,6 +61,9 @@ dependencies = [
 ]
 [tool.hatch.envs.types.scripts]
 check = "mypy --install-types --non-interactive {args:src/asyncio_task_manager tests}"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
 
 [tool.coverage.run]
 source_pkgs = ["asyncio_task_manager", "tests"]
