@@ -5,7 +5,7 @@ async-task-manager is a Python library that provides an easy-to-use interface fo
 
 - Create tasks with unique task IDs and coroutine functions
 - Specify dependencies between tasks
-- Run tasks concurrently, respecting the maximum thread count
+- Run tasks concurrently, respecting a maximum thread count
 - Ensure tasks are run only after all their dependencies have finished running
 
 ## Installation
@@ -17,16 +17,25 @@ pip install asyncio-task-manager
 ```
 
 ## Methods
+
+```python
 TaskManager(max_threads: int)
+```
 Creates a new task manager instance with the specified maximum thread count.
 
+```python
 create_task(task_id: str, coroutine: Callable[..., Coroutine], *args, **kwargs) -> None
+```
 Creates a new task with the given task ID and coroutine function.
 
+```python
 add_dependency(task_id: str, dependency_id: str) -> None
+```
 Adds a dependency between two tasks, indicating that task_id depends on the completion of dependency_id.
 
+```python
 run_tasks() -> None
+```
 Runs all tasks in the dependency graph, respecting the maximum thread count.
 
 ## Example Usage
