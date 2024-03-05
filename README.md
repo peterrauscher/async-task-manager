@@ -1,5 +1,19 @@
 # asyncio-task-manager
+
+[![PyPI - Version](https://img.shields.io/pypi/v/asyncio-task-manager.svg)](https://pypi.org/project/asyncio-task-manager)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/asyncio-task-manager.svg)](https://pypi.org/project/asyncio-task-manager)
+
 asyncio-task-manager is a Python library that provides an easy-to-use interface for managing asyncio tasks with dependencies. It allows you to create tasks, specify their dependencies, and run them concurrently in a thread pool.
+
+---
+
+**Table of Contents**
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Example](#example)
+- [License](#license)
 
 ## Features
 
@@ -10,9 +24,9 @@ asyncio-task-manager is a Python library that provides an easy-to-use interface 
 
 ## Installation
 
-You can install Asyncio Task Manager using pip:
+asyncio-task-manager is available on [PyPi](https://pypi.org/project/asyncio-task-manager):
 
-```
+```console
 pip install asyncio-task-manager
 ```
 
@@ -21,26 +35,30 @@ pip install asyncio-task-manager
 ```python
 TaskManager(max_threads: int)
 ```
+
 Creates a new task manager instance with the specified maximum thread count.
 
 ```python
 create_task(task_id: str, coroutine: Callable[..., Coroutine], *args, **kwargs) -> None
 ```
+
 Creates a new task with the given task ID and coroutine function.
 
 ```python
 add_dependency(task_id: str, dependency_id: str) -> None
 ```
+
 Adds a dependency between two tasks, indicating that task_id depends on the completion of dependency_id.
 
 ```python
 run_tasks() -> None
 ```
+
 Runs all tasks in the dependency graph, respecting the maximum thread count.
 
 ## Example
 
-Here's a basic example of how to use Asyncio Task Manager:
+Here's a basic example. We create three tasks (task1, task2, and task3) and specify that task2 and task3 depend on task1. We set the maximum thread count to 2. The task manager ensures that task1 is run first, and then task2 and task3 are run concurrently.:
 
 ```python
 from asyncio_task_manager import TaskManager
@@ -76,10 +94,6 @@ async def main():
 asyncio.run(main())
 ```
 
-In this example, we create three tasks (task1, task2, and task3) and specify that task2 and task3 depend on task1. We set the maximum thread count to 2. The task manager ensures that task1 is run first, and then task2 and task3 are run concurrently.
-
-## Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on the GitHub repository.
-
 ## License
-This library is licensed under the MIT License.
+
+`asyncio-task-manager` is distributed under the terms of the [MIT](https://spdx.org/licenses/MIT.html) license.
