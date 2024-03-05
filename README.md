@@ -16,7 +16,7 @@ You can install Asyncio Task Manager using pip:
 pip install asyncio-task-manager
 ```
 
-## Methods
+## Usage
 
 ```python
 TaskManager(max_threads: int)
@@ -38,7 +38,7 @@ run_tasks() -> None
 ```
 Runs all tasks in the dependency graph, respecting the maximum thread count.
 
-## Example Usage
+## Example
 
 Here's a basic example of how to use Asyncio Task Manager:
 
